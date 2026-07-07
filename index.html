@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Secretaria de Educação</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts e Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Barra Lateral -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="img/logo.jpg" alt="Logo SEMEC" class="logo">
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="#"><span class="material-icons-sharp">dashboard</span> <span>Dashboard</span></a></li>
+                <li><a href="#"><span class="material-icons-sharp">task_alt</span> <span>Minhas Tarefas</span></a></li>
+            </ul>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Painel de Controle</h1>
+                <div class="header-actions">
+                    <button id="open-modal-btn" class="add-task-btn">
+                        <span class="material-icons-sharp">add</span>
+                        <span>Nova Tarefa</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Cards de Resumo -->
+            <section class="summary-cards">
+                <div class="card">
+                    <span class="material-icons-sharp icon total">list_alt</span>
+                    <h3>Total de Tarefas</h3>
+                    <p id="total-tasks">0</p>
+                </div>
+                <div class="card">
+                    <span class="material-icons-sharp icon pending">pending_actions</span>
+                    <h3>Tarefas Pendentes</h3>
+                    <p id="pending-tasks">0</p>
+                </div>
+                <div class="card">
+                    <span class="material-icons-sharp icon completed">check_circle</span>
+                    <h3>Tarefas Concluídas</h3>
+                    <p id="completed-tasks">0</p>
+                </div>
+            </section>
+
+            <!-- Tabela de Tarefas -->
+            <section class="tasks-section">
+                <h2>Tarefas Recentes</h2>
+                <table class="tasks-table">
+                    <thead>
+                        <tr>
+                            <th>Tarefa</th>
+                            <th>Responsável</th>
+                            <th>Tipo</th>
+                            <th>Prazo</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tasks-list">
+                        <!-- As tarefas serão inseridas aqui via JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para Nova Tarefa -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2>Adicionar Nova Tarefa</h2>
+                <button id="close-modal-btn" class="close-modal-btn">&times;</button>
+            </header>
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-title">Título da Tarefa</label>
+                    <input type="text" id="task-title" placeholder="Ex: Elaborar relatório de matrículas" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-responsible">Responsável</label>
+                    <input type="text" id="task-responsible" placeholder="Ex: Ana Silva" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-type">Tipo</label>
+                    <input type="text" id="task-type" placeholder="Ex: Administrativo, Pedagógico" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-deadline">Prazo</label>
+                    <input type="date" id="task-deadline" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-observations">Observações</label>
+                    <textarea id="task-observations" rows="3" placeholder="Detalhes importantes sobre a tarefa..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Salvar Tarefa</button>
+                    <input type="hidden" id="task-id">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
