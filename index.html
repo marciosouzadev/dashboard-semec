@@ -28,6 +28,10 @@
         <main class="main-content">
             <header class="main-header">
                 <h1>Painel de Controle</h1>
+                <div class="search-wrapper">
+                    <span class="material-icons-sharp">search</span>
+                    <input type="search" id="search-input" placeholder="Buscar tarefas...">
+                </div>
                 <div class="header-actions">
                     <button id="open-modal-btn" class="add-task-btn">
                         <span class="material-icons-sharp">add</span>
@@ -57,22 +61,37 @@
 
             <!-- Tabela de Tarefas -->
             <section class="tasks-section">
-                <h2>Tarefas Recentes</h2>
-                <table class="tasks-table">
-                    <thead>
-                        <tr>
-                            <th>Tarefa</th>
-                            <th>Responsável</th>
-                            <th>Tipo</th>
-                            <th>Prazo</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tasks-list">
-                        <!-- As tarefas serão inseridas aqui via JavaScript -->
-                    </tbody>
-                </table>
+                <div class="tasks-header">
+                    <h2>Minhas Tarefas</h2>
+                    <div class="report-controls">
+                        <label for="start-date">De:</label>
+                        <input type="date" id="start-date">
+                        <label for="end-date">Até:</label>
+                        <input type="date" id="end-date">
+                        <button id="filter-date-btn" class="btn-secondary">Filtrar</button>
+                        <button id="clear-filter-btn" class="btn-tertiary">Limpar</button>
+                    </div>
+                </div>
+                <div class="tasks-table-container">
+                    <table class="tasks-table">
+                        <thead>
+                            <tr>
+                                <th>Tarefa</th>
+                                <th>Responsável</th>
+                                <th>Tipo</th>
+                                <th>Prazo</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tasks-list">
+                            <!-- As tarefas serão inseridas aqui via JavaScript -->
+                        </tbody>
+                        <tfoot id="tasks-footer" class="hidden">
+                            <tr><td colspan="6">Nenhuma tarefa encontrada.</td></tr>
+                        </tfoot>
+                    </table>
+                </div>
             </section>
         </main>
     </div>
@@ -81,7 +100,7 @@
     <div id="task-modal" class="modal">
         <div class="modal-content">
             <header class="modal-header">
-                <h2>Adicionar Nova Tarefa</h2>
+                <h2 id="modal-title">Adicionar Nova Tarefa</h2>
                 <button id="close-modal-btn" class="close-modal-btn">&times;</button>
             </header>
             <form id="task-form">
